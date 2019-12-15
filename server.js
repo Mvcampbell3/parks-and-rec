@@ -19,4 +19,3 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/parksandrec', {
   .catch(err => {
     console.log(err)
   })
-
