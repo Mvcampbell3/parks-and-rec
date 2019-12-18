@@ -21,7 +21,12 @@ const UserSchema = new Schema({
   password: {
     type: String,
     required: true
-  }
+  },
+
+  tripIds: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Trip'
+  }]
 })
 
 const User = mongoose.model('User', UserSchema);
