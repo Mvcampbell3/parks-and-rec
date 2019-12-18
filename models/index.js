@@ -1,4 +1,5 @@
 module.exports = {
   User: require('./user'),
-  Park: require('./park')
+  Park: require('./park'),
+  Trip: require('./trip')
 }
