@@ -25,9 +25,10 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/parksandrec', {
     console.log('mongodb connected');
 
     // Run Parks and/or User seeds first, then run Trips seed with the others set to false
+
     // End result of Parks seed is re-seeding all 61 parks
-    // End result of User seed is creating one user Michael Campbell mvcampbell3@gmail.com password=test
-    // End result of Trip seed is creating one trip with test user mvcampbell3@gmail.com to two parks
+    // End result of User seed is creating one user Test User test@gmail.com password=test
+    // End result of Trip seed is creating one trip with test user test@gmail.com to two parks
 
 
     if (seedParks) {

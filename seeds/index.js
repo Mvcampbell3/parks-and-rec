@@ -21,14 +21,13 @@ module.exports.seedParks = function() {
 module.exports.seedUsers = function() {
   db.User.deleteMany()
     .then(result => {
-      console.log(result);
-      // password for user mvcampbell3@gmail.com = test
+      // password for user test@gmail.com = test
       bcrypt.hash('test', 10, function(err, hash) {
         if (err) throw err;
         const newUser = new db.User({
-          firstname: 'Michael',
-          lastname: 'Campbell',
-          email: 'mvcampbell3@gmail.com',
+          firstname: 'Test',
+          lastname: 'User',
+          email: 'test@gmail.com',
           password: hash
         })
 
@@ -45,19 +44,15 @@ module.exports.seedTrips = function() {
   let user;
 
   db.Trip.deleteMany()
-    .then(result => {
-      console.log(result);
-
-      db.User.findOne({ email: 'mvcampbell3@gmail.com' })
+    .then(() => {
+      db.User.findOne({ email: 'test@gmail.com' })
         .then(userDB => {
-          console.log(userDB._id)
-          console.log(userDB)
+
           user = userDB._id;
           db.Park.find()
             .then(parks => {
-              console.log(user)
+
               const newTrip = new db.Trip({
-                
                 userId: user,
                 parkIds: [
                   parks[40]._id,
