@@ -1,0 +1,83 @@
+@import '../../variables.scss';
+
+.park-holder{
+  display: grid;
+  grid-template-columns: repeat(3, 300px);
+  gap: 40px;
+  width: fit-content;
+  margin: 3em auto;
+}
+
+.park-name{
+  font-family: $font-title;
+  letter-spacing: 2px;
+}
+
+.park-state{
+  font-size: 14px;
+}
+
+.park-info{
+  font-family: $font-content;
+}
+
+.park{
+  width: 300px;
+  background-color: $bg-white;
+  border-radius: 10px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all .2s;
+
+  &:hover{
+    background-color: $bg-primary;
+    color: white;
+    transform: scale(1.10);
+
+    .park-btn{
+      background-color: white;
+    }
+  }
+}
+
+.park-img{
+  width: 290px;
+  height: auto;
+  display: block;
+}
+
+.park-title, .park-sub{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 0;
+}
+
+.park-middle{
+  padding: 10px;
+}
+
+.park-description{
+  text-indent: 5px;
+}
+
+
+
+.button-holder{
+  display: flex;
+  justify-content: space-between;
+
+  .park-btn{
+    color: $bg-primary;
+    background-color: rgb(216, 216, 216);
+    padding: 4px 6px;
+    border-radius: 5px;
+    transition: all .25s;
+    &:hover {
+      background-color: $bg-primary;
+      color: $bg-secondary;
+    }
+  }
+}

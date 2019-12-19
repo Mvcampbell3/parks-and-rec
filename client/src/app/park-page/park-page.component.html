@@ -1,0 +1,30 @@
+<div class="conatiner">
+  <div class="park-holder">
+    <div class="park" *ngFor='let park of parks, let i = index'>
+      <div class="top-park">
+
+        <div class="park-title">
+          <h3 class='park-name'>{{park.name}}</h3>
+          <h4 class="park-info park-state">{{park.state}}</h4>
+        </div>
+
+        <img src={{park.img_url}} alt={{park.name}} class="park-img">
+
+      </div>
+      <div class="park-middle">
+        <div class="park-sub">
+          <h6 class="park-info">Est. {{park.date}}</h6>
+          <h6 class="park-info">Visitors: {{park.visitors}}</h6>
+        </div>
+
+
+      </div>
+      <div class="park-bottom">
+        <div class="button-holder">
+          <a class='btn park-btn' target='_blank' href={{park.link}}>Website</a>
+          <a href='/detail/{{park.name}}' class="btn park-btn">More Info</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
