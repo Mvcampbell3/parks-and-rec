@@ -40,11 +40,7 @@ export class LoginComponent implements OnInit {
 
   loginUser(email, password) {
     this.http.loginUser(email, password).subscribe(
-      (data: {
-        login: boolean,
-        token: string,
-        user: User
-      }) => {
+      (data: { login: boolean, token: string, user: User }) => {
         console.log(data)
         this.setToken(data.token)
         this.userService.user.next(data.user)

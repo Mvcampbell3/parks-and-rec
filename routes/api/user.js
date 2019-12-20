@@ -16,28 +16,38 @@ router.get('/all', (req, res) => {
 })
 
 router.post('/signup', (req, res) => {
-  const { firstname, lastname, email, password } = req.body;
 
-  bcrypt.hash(password, 10)
-    .then(hash => {
-      const newUser = new db.User({
-        firstname,
-        lastname,
-        email,
-        password: hash
-      })
+  db.User.findOne({ email: req.body.email })
+    .then(dbUser => {
+      if (!dbUser) {
+        const { firstname, lastname, email, password } = req.body;
 
-      newUser.save()
-        .then(result => {
-          res.status(201).json(result)
-        })
-        .catch(err => {
-          res.status(422).json(err)
-        })
+        bcrypt.hash(password, 10)
+          .then(hash => {
+            const newUser = new db.User({
+              firstname,
+              lastname,
+              email,
+              password: hash
+            })
+
+            newUser.save()
+              .then(result => {
+                res.status(201).json(result)
+              })
+              .catch(err => {
+                res.status(422).json(err)
+              })
+          })
+          .catch(err => {
+            res.status(422).json(err)
+          })
+      } else {
+        res.status(422).json({ msg: 'User with email already exists' })
+      }
     })
-    .catch(err => {
-      res.status(422).json(err)
-    })
+
+
 })
 
 router.post('/login', (req, res) => {
