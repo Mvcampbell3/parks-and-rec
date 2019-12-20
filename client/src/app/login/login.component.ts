@@ -55,6 +55,17 @@ export class LoginComponent implements OnInit {
     )
   }
 
+  signupUser(firstname, lastname, email, password) {
+    this.http.signupUser(firstname, lastname, email, password).subscribe(
+      (data: any) => {
+        console.log(data)
+      },
+      (err: any) => {
+        console.log(err)
+      }
+    )
+  }
+
   showUser() {
     console.log(this.user)
     // console.log(this.userService.user.getValue())
@@ -69,12 +80,17 @@ export class LoginComponent implements OnInit {
   }
 
   loginButtonHandle() {
-    console.log(this.email);
-    console.log(this.password);
     if (this.email && this.password) {
       return this.loginUser(this.email, this.password)
     }
-    return console.log('missing email or password')
+    return console.log('missing email and/or password')
+  }
+
+  signupButtonHandle() {
+    if (this.firstname, this.lastname, this.email, this.password) {
+      return this.signupUser(this.firstname, this.lastname, this.email, this.password)
+    }
+    return console.log('missing firstname, lastname, email, and/or password')
   }
 
   switchSignup() {

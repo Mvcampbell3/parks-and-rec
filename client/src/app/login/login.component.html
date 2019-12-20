@@ -1,7 +1,7 @@
 <div class="container">
-  <!-- <button (click)='showUser()'>Test login</button>
-  <button (click)='testUserLogin()'>Login Test User</button>
-  <button (click)='logOutUser()'>LogOut</button> -->
+  <!-- <button (click)='showUser()'>Test login</button> -->
+  <!-- <button (click)='testUserLogin()'>Login Test User</button> -->
+  <button (click)='logOutUser()'>LogOut</button>
 
 
   <div class="login-box">
@@ -30,8 +30,8 @@
     <div class="login-buttons">
       <button class="linkBtn switchLoginBtn"
         (click)='switchSignup()'>{{showSignup ? 'Already a member?':'Need to signup?'}}</button>
-      <button class="btn subBtn loginBtn" (click)='loginButtonHandle()'>Login</button>
-
+      <button class="btn subBtn loginBtn"
+        (click)='showSignup ? signupButtonHandle():loginButtonHandle()'>{{showSignup ? 'Signup':'Login'}}</button>
     </div>
   </div>
 </div>

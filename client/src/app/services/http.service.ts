@@ -22,6 +22,10 @@ export class HttpService {
     return this._http.post('/api/user/login', { email, password })
   }
 
+  signupUser(firstname, lastname, email, password) {
+    return this._http.post('/api/user/signup', { firstname, lastname, email, password })
+  }
+
   checkAuth() {
     return this._http.get('/api/user/checkauth', this.setAuthorization())
   }
