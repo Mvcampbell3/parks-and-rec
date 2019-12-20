@@ -8,16 +8,17 @@ import { User } from '../models/user'
 })
 export class UserService {
 
-  // user: User;
-  loggedIn: boolean = false;
-  user = new BehaviorSubject<User>({
+  emptyUser: User = {
     firstname: '',
     lastname: '',
     email: '',
     id: '',
     iat: '',
     exp: ''
-  })
+  }
+
+  loggedIn = new BehaviorSubject<boolean>(false);
+  user = new BehaviorSubject<User>(this.emptyUser)
 
   constructor(private http: HttpService) { }
 
@@ -28,17 +29,13 @@ export class UserService {
         (data: any) => {
           console.log(data)
           this.user.next(data.user)
+          this.loggedIn.next(true);
         },
         (err: any) => {
           console.log(err)
-          this.user.next({
-            firstname: '',
-            lastname: '',
-            email: '',
-            id: '',
-            iat: '',
-            exp: ''
-          })
+          this.user.next(this.emptyUser);
+          localStorage.removeItem('roose-token')
+          this.loggedIn.next(false);
         }
       )
     } else {
@@ -46,18 +43,12 @@ export class UserService {
     }
   }
 
-  sanitizeUser() {
-    this.user.next({
-      firstname: '',
-      lastname: '',
-      email: '',
-      id: '',
-      iat: '',
-      exp: ''
-    })
-
+  logOutUser() {
+    this.user.next(this.emptyUser);
+    this.loggedIn.next(false);
     localStorage.removeItem('roose-token')
   }
+
 }
 
 

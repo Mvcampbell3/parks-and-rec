@@ -64,7 +64,7 @@ router.post('/login', (req, res) => {
           if (err) {
             return res.status(500).json({ msg: "JWT ERROR" })
           }
-          return res.status(200).json({ login: true, token: token })
+          return res.status(200).json({ login: true, token: token, user: decoded })
         })
       } else {
         return res.status(401).json({ msg: 'Unauthorized' })
