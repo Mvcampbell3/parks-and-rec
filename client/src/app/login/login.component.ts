@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HttpService } from '../services/http.service';
 import { UserService } from '../services/user.service';
-import { User } from '../models/user'; 
+import { User } from '../models/user';
 
 @Component({
   selector: 'app-login',
@@ -12,15 +12,19 @@ export class LoginComponent implements OnInit {
 
   email: string;
   password: string;
+  firstname: string;
+  lastname: string;
 
   user: User;
   userSubscription;
+
+  showSignup: boolean = false;
 
   constructor(private http: HttpService, public userService: UserService) { }
 
   ngOnInit() {
     this.userSubscription = this.userService.user.subscribe(
-      (data:any) => {
+      (data: any) => {
         this.user = data;
       }
     )
@@ -62,5 +66,36 @@ export class LoginComponent implements OnInit {
 
   logOutUser() {
     this.userService.logOutUser();
+  }
+
+  loginButtonHandle() {
+    console.log(this.email);
+    console.log(this.password);
+    if (this.email && this.password) {
+      return this.loginUser(this.email, this.password)
+    }
+    return console.log('missing email or password')
+  }
+
+  switchSignup() {
+    const sliders = [].slice.call(document.querySelectorAll('.sliders'));
+
+    switch (this.showSignup) {
+      case false:
+        console.log('this is false');
+        this.showSignup = true;
+        sliders.forEach(slider => slider.classList = 'input-group slider slide-down')
+        break;
+      case true:
+        console.log('this is true');
+        sliders.forEach(slider => slider.classList = 'input-group slider slide-up');
+        setTimeout(() => {
+          this.showSignup = false;
+          console.log('timeout ran')
+        }, 300)
+        break;
+      default:
+        console.log('switch login box not working as expected')
+    }
   }
 }

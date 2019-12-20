@@ -10,15 +10,15 @@ import { User } from './models/user';
 })
 
 export class AppComponent implements OnInit {
-  title = 'client';
 
   user: User;
+  userSubscription;
 
   constructor(public userService: UserService, private http: HttpService) { }
 
   ngOnInit() {
     this.userService.checkAuth()
-    this.userService.user.subscribe(
+    this.userSubscription = this.userService.user.subscribe(
       (data: User) => {
         this.user = data;
       }
