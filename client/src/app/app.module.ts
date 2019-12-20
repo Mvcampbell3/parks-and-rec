@@ -5,11 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ParkPageComponent } from './park-page/park-page.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ParkPageComponent
+    ParkPageComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

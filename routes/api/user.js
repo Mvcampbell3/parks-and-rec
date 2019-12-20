@@ -2,6 +2,7 @@ const router = require('express').Router();
 const db = require('../../models');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const checkAuth = require('../../middleware/checkAuth')
 
 // Testing route only, remove before deployment
 router.get('/all', (req, res) => {
@@ -59,7 +60,7 @@ router.post('/login', (req, res) => {
           id: user._id
         };
 
-        jwt.sign(decoded, process.env.JWT_KEY, function(err, token) {
+        jwt.sign(decoded, process.env.JWT_KEY, { expiresIn: '30m' }, function(err, token) {
           if (err) {
             return res.status(500).json({ msg: "JWT ERROR" })
           }
@@ -84,6 +85,12 @@ router.get('/wipe', (req, res) => {
     .catch(err => {
       res.status(500).json(err)
     })
+})
+
+
+router.get('/checkauth', checkAuth, (req, res) => {
+
+  res.status(200).json({ ok: true, user: req.user })
 })
 
 module.exports = router;
