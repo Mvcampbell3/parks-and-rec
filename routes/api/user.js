@@ -90,7 +90,7 @@ router.get('/wipe', (req, res) => {
 
 router.get('/checkauth', checkAuth, (req, res) => {
 
-  res.status(200).json({ ok: true, user: req.user })
+  res.status(200).json({ loggedIn: true, user: req.user })
 })
 
 module.exports = router;

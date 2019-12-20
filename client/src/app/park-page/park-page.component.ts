@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Park } from '../models/park';
 import { HttpService } from '../services/http.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-park-page',
@@ -11,10 +12,11 @@ export class ParkPageComponent implements OnInit {
 
   parks: Park[] = [];
 
-  constructor(private http: HttpService) { }
+  constructor(private http: HttpService, public userService: UserService) { }
 
   ngOnInit() {
     this.getParks()
+    // console.log(this.userService.user)
   }
 
   getParks() {
