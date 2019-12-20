@@ -8,13 +8,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { ParkPageComponent } from './park-page/park-page.component';
 import { LoginComponent } from './login/login.component';
 import { ParkItemComponent } from './park-item/park-item.component';
+import { ExploreComponent } from './explore/explore.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ParkPageComponent,
     LoginComponent,
-    ParkItemComponent
+    ParkItemComponent,
+    ExploreComponent
   ],
   imports: [
     BrowserModule,

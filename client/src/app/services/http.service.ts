@@ -29,4 +29,8 @@ export class HttpService {
   checkAuth() {
     return this._http.get('/api/user/checkauth', this.setAuthorization())
   }
+
+  explorePark(id) {
+    return this._http.get(`/api/park/explore/${id}`)
+  }
 }

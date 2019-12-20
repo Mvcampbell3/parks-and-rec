@@ -23,4 +23,12 @@ router.get('/sort/visitors', (req, res) => {
     .catch(err => res.status(500).json(err))
 })
 
+router.get('/explore/:id', (req, res) => {
+  db.Park.findById(req.params.id)
+    .then(park => {
+      res.status(200).json(park)
+    })
+    .catch(err => res.status(404).json(err))
+})
+
 module.exports = router;
