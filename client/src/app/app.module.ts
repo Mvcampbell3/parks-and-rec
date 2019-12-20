@@ -7,12 +7,14 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ParkPageComponent } from './park-page/park-page.component';
 import { LoginComponent } from './login/login.component';
+import { ParkItemComponent } from './park-item/park-item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ParkPageComponent,
-    LoginComponent
+    LoginComponent,
+    ParkItemComponent
   ],
   imports: [
     BrowserModule,
