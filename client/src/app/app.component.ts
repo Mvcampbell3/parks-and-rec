@@ -9,21 +9,20 @@ import { User } from './models/user';
   styleUrls: ['./app.component.scss']
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'client';
-  
-  user = this.userService.user.subscribe(
-    (data:any) => {
-      console.log(data)
-      console.log('with user service inside of app.component')
-      this.user = data;
-    }
-  );
+
+  user: User;
 
   constructor(public userService: UserService, private http: HttpService) { }
 
   ngOnInit() {
     this.userService.checkAuth()
+    this.userService.user.subscribe(
+      (data: User) => {
+        this.user = data;
+      }
+    )
   }
 
   showUser() {

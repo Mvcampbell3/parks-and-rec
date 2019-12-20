@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HttpService } from '../services/http.service';
 import { UserService } from '../services/user.service';
 import { User } from '../models/user'; 
@@ -14,18 +14,21 @@ export class LoginComponent implements OnInit {
   password: string;
 
   user: User;
+  userSubscription;
 
   constructor(private http: HttpService, public userService: UserService) { }
 
   ngOnInit() {
-    this.userService.user.subscribe(
+    this.userSubscription = this.userService.user.subscribe(
       (data:any) => {
         this.user = data;
       }
     )
   }
 
-  // Add ng On Destroy userService.user.unsubscribe()
+  ngOnDestroy() {
+    this.userSubscription.unsubscribe();
+  }
 
   setToken(token: string) {
     localStorage.setItem('roose-token', JSON.stringify(token))
