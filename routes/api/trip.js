@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const db = require('../../models');
+const checkAuth = require('../../middleware/checkAuth')
 
 router.get('/', (req, res) => {
   db.Trip.find()
@@ -19,6 +20,18 @@ router.get('/detail/:id', (req, res) => {
     .catch(err => {
       res.status(500).json(err)
     })
+})
+
+router.get('/profile/', checkAuth, (req, res) => {
+  db.Trip.find({ userId: req.user.id })
+    .populate('parkIds')
+    .populate({ path: 'userId', select: '-password' })
+    .then(profile => {
+      res.status(200).json(profile)
+    })
+    .catch(err => [
+      res.status(500).json(err)
+    ])
 })
 
 router.post('/new', (req, res) => {

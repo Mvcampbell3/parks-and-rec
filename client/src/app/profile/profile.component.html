@@ -1,3 +1,11 @@
 <p>profile works!</p>
 
 <button (click)='logoutUser()'>Logout</button>
+<button (click)='testTrips()'>Trips</button>
+
+
+<div class="container">
+  <div class="trip-holder" *ngIf='loaded'>
+    <app-trip-item *ngFor='let trip of trips, let i = index' [trip]='trip'></app-trip-item>
+  </div>
+</div>

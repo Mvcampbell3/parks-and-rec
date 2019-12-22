@@ -10,6 +10,7 @@ import { LoginComponent } from './login/login.component';
 import { ParkItemComponent } from './park-item/park-item.component';
 import { ExploreComponent } from './explore/explore.component';
 import { ProfileComponent } from './profile/profile.component';
+import { TripItemComponent } from './trip-item/trip-item.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ProfileComponent } from './profile/profile.component';
     LoginComponent,
     ParkItemComponent,
     ExploreComponent,
-    ProfileComponent
+    ProfileComponent,
+    TripItemComponent
   ],
   imports: [
     BrowserModule,

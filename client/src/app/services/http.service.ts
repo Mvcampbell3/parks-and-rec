@@ -33,4 +33,8 @@ export class HttpService {
   explorePark(id) {
     return this._http.get(`/api/park/explore/${id}`)
   }
+
+  getUserProfile(id) {
+    return this._http.get('/api/trip/profile', this.setAuthorization())
+  }
 }

@@ -1,0 +1,9 @@
+<div class="trip">
+  <p>{{trip.name}}</p>
+  <div *ngFor='let park of trip.parkIds, let i = index'>
+    <p>{{park.name}}</p>
+    <img src={{park.img_url}} alt="">
+  </div>
+  <p>{{trip.userId.firstname}} {{trip.userId.lastname}}</p>
+  <p>{{trip.userId.email}}</p>
+</div>
