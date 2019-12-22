@@ -9,6 +9,7 @@ import { ParkPageComponent } from './park-page/park-page.component';
 import { LoginComponent } from './login/login.component';
 import { ParkItemComponent } from './park-item/park-item.component';
 import { ExploreComponent } from './explore/explore.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ExploreComponent } from './explore/explore.component';
     ParkPageComponent,
     LoginComponent,
     ParkItemComponent,
-    ExploreComponent
+    ExploreComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

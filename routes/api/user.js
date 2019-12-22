@@ -99,8 +99,11 @@ router.get('/wipe', (req, res) => {
 
 
 router.get('/checkauth', checkAuth, (req, res) => {
-
   res.status(200).json({ loggedIn: true, user: req.user })
+})
+
+router.get('/detail', checkAuth, (req, res) => {
+
 })
 
 module.exports = router;
